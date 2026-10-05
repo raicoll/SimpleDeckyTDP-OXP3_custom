@@ -87,5 +87,22 @@
   "ADVANCED_ASUS_EXTREME_POWERSAVE": "Asus 익스트림 절전 모드 활성화",
   "ADVANCED_ASUS_EXTREME_POWERSAVE_DESC": "절전 모드 중 전력 소비를 줄입니다. 경고, 업데이트된 MCU 펌웨어와 업데이트된 Asus-Linux 커널 모듈이 필요합니다",
   "ADVANCED_ASUS_USE_WMI": "TDP에 Asus WMI 사용",
-  "ADVANCED_ASUS_USE_WMI_DESC": "ryzenadj 대신 Asus WMI 호출 사용"
+  "ADVANCED_ASUS_USE_WMI_DESC": "ryzenadj 대신 Asus WMI 호출 사용",
+  "TDP_ACTUAL": "현재 {tdp}W",
+  "FAN_SPEED_LABEL": "팬",
+  "FAN_MODE_SILENT": "저소음",
+  "FAN_MODE_AUTO": "자동",
+  "FAN_MODE_STANDARD": "표준",
+  "FAN_MODE_MAX": "최대",
+  "FAN_TARGET": "목표",
+  "FAN_TARGET_AUTO": "EC 자동 제어",
+  "FAN_SILENT_COOL": "50°C 이하 무소음",
+  "FAN_SILENT_WARM": "온도가 높아 최저 속도",
+  "FAN_STANDARD_CURVE": "CPU 온도에 따라 조절",
+  "FAN_EMERGENCY": "고온 보호",
+  "FAN_UNAVAILABLE": "팬 제어를 사용할 수 없음 (ec_sys 확인)",
+  "FAN_TDP_CAPPED": "과열: TDP {cap}W로 제한 중",
+  "FAN_TDP_LIMITER": "과열 시 TDP 자동 감소",
+  "FAN_TDP_LIMITER_DESC": "CPU 80°C부터 75°C가 될 때까지 TDP를 조금씩 낮추고, 식으면 복구",
+  "FAN_TDP_FLOOR": "TDP 최저 한도"
 }

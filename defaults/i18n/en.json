@@ -87,5 +87,22 @@
   "ADVANCED_ASUS_EXTREME_POWERSAVE": "Enable Asus Extreme Powersave Mode",
   "ADVANCED_ASUS_EXTREME_POWERSAVE_DESC": "Reduces power consumption during sleep. Warning, requires updated MCU firmware and updated Asus-Linux kernel module",
   "ADVANCED_ASUS_USE_WMI": "Use Asus WMI for TDP",
-  "ADVANCED_ASUS_USE_WMI_DESC": "Use Asus WMI calls instead of ryzenadj"
+  "ADVANCED_ASUS_USE_WMI_DESC": "Use Asus WMI calls instead of ryzenadj",
+  "TDP_ACTUAL": "now {tdp}W",
+  "FAN_SPEED_LABEL": "Fan",
+  "FAN_MODE_SILENT": "Quiet",
+  "FAN_MODE_AUTO": "Auto",
+  "FAN_MODE_STANDARD": "Standard",
+  "FAN_MODE_MAX": "Max",
+  "FAN_TARGET": "Target",
+  "FAN_TARGET_AUTO": "set by the EC",
+  "FAN_SILENT_COOL": "silent at 50°C or below",
+  "FAN_SILENT_WARM": "warm, lowest speed",
+  "FAN_STANDARD_CURVE": "follows CPU temperature",
+  "FAN_EMERGENCY": "high temperature protection",
+  "FAN_UNAVAILABLE": "Fan control unavailable (check ec_sys)",
+  "FAN_TDP_CAPPED": "Overheating: TDP limited to {cap}W",
+  "FAN_TDP_LIMITER": "Lower TDP when overheating",
+  "FAN_TDP_LIMITER_DESC": "From 80°C, lower TDP step by step until 75°C, and restore it once cool",
+  "FAN_TDP_FLOOR": "Lowest TDP"
 }

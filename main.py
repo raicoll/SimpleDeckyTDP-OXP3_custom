@@ -16,6 +16,7 @@ import device_utils
 from devices import lenovo
 import charge_limit
 import i18n
+import oxp3_fan
 
 class Plugin:
 
@@ -170,6 +171,7 @@ class Plugin:
 
   async def on_resume(self):
     decky_plugin.logger.info(f'main#on_resume started')
+    oxp3_fan.on_resume()
     if device_utils.is_legion_go():
       lenovo.invalidate_platform_profile_cache()
       lenovo.wait_for_wmi_ready(timeout_seconds=10)
@@ -186,7 +188,8 @@ class Plugin:
     return plugin_utils.set_values_for_game_id(gameId)
   
   async def get_latest_version_num(self):
-    return plugin_update.get_latest_version()
+    # OTA updates are disabled in this fork, so never offer an upstream update
+    return ""
 
   async def poll_tdp(self, currentGameId: str):
     settings = get_saved_settings()
@@ -227,7 +230,9 @@ class Plugin:
       cpu_utils.set_tdp(max_tdp)
 
   async def ota_update(self):
-    # trigger ota update
+    # OTA updates are disabled in this fork: an upstream release would replace the ONEXPLAYER 3 changes
+    decky_plugin.logger.info("ota_update is disabled in this build")
+    return False
     try:
       with plugin_timeout.time_limit(15):
         return plugin_update.ota_update()
@@ -262,21 +267,35 @@ class Plugin:
         return current_status
     return None
 
+  # ONEXPLAYER 3 fan control
+  async def fan_get_status(self):
+    return oxp3_fan.read_status()
+
+  async def fan_set_mode(self, mode: str, target: int = None):
+    return oxp3_fan.set_mode(mode, target)
+
+  async def fan_dump_ec(self):
+    return oxp3_fan.dump_ec()
+
+  async def fan_set_options(self, tdp_limiter: bool = None, tdp_floor: int = None):
+    return oxp3_fan.set_options(tdp_limiter, tdp_floor)
+
   # Asyncio-compatible long-running code, executed in a task when the plugin is loaded
   async def _main(self):
     decky_plugin.logger.info("SimpleDeckyTDP Starting")
     migrations.check_ryzenadj_coall_support()
     if charge_limit.supports_charge_limit():
       charge_limit.initialize_charge_limit()
+    oxp3_fan.start()
 
   # Function called first during the unload process, utilize this to handle your plugin being removed
   async def _unload(self):
     decky_plugin.logger.info("SimpleDeckyTDP Unloading")
-    pass
+    oxp3_fan.stop()
 
   async def _uninstall(self):
     decky_plugin.logger.info("SimpleDeckyTDP Uninstalling")
-    pass
+    oxp3_fan.stop()
 
   # Migrations that should be performed before entering `_main()`.
   async def _migration(self):

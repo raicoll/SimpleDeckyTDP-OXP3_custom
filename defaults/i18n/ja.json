@@ -87,5 +87,22 @@
   "ADVANCED_ASUS_EXTREME_POWERSAVE": "Asusエクストリーム省電力モードを有効化",
   "ADVANCED_ASUS_EXTREME_POWERSAVE_DESC": "スリープモード中の電力消費を削減します。警告、更新されたMCUファームウェアと更新されたAsus-Linuxカーネルモジュールが必要です",
   "ADVANCED_ASUS_USE_WMI": "TDPにAsus WMIを使用",
-  "ADVANCED_ASUS_USE_WMI_DESC": "ryzenadj の代わりにAsus WMI呼び出しを使用"
+  "ADVANCED_ASUS_USE_WMI_DESC": "ryzenadj の代わりにAsus WMI呼び出しを使用",
+  "TDP_ACTUAL": "現在 {tdp}W",
+  "FAN_SPEED_LABEL": "ファン",
+  "FAN_MODE_SILENT": "静音",
+  "FAN_MODE_AUTO": "自動",
+  "FAN_MODE_STANDARD": "標準",
+  "FAN_MODE_MAX": "最大",
+  "FAN_TARGET": "目標",
+  "FAN_TARGET_AUTO": "EC による自動制御",
+  "FAN_SILENT_COOL": "50°C 以下で停止",
+  "FAN_SILENT_WARM": "高温のため最低速度",
+  "FAN_STANDARD_CURVE": "CPU 温度に追従",
+  "FAN_EMERGENCY": "高温保護",
+  "FAN_UNAVAILABLE": "ファン制御を利用できません (ec_sys を確認)",
+  "FAN_TDP_CAPPED": "過熱: TDP を {cap}W に制限中",
+  "FAN_TDP_LIMITER": "過熱時に TDP を自動で下げる",
+  "FAN_TDP_LIMITER_DESC": "CPU が 80°C になると 75°C まで TDP を少しずつ下げ、冷えたら戻します",
+  "FAN_TDP_FLOOR": "TDP 下限"
 }

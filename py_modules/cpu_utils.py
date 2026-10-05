@@ -10,6 +10,7 @@ from devices import lenovo, rog_ally, steam_deck
 from plugin_settings import set_setting, get_saved_settings
 import device_utils
 import ryzenadj
+import oxp3_fan
 
 AMD_PSTATE_PATH="/sys/devices/system/cpu/amd_pstate/status"
 AMD_LEGACY_CPU_BOOST_PATH = "/sys/devices/system/cpu/cpufreq/boost"
@@ -28,6 +29,7 @@ INTEL_MAX_TDP_SETTING = 'INTEL_MAX_TDP_SETTING'
 # arbitrary values can be set on Intel devices, likely a bug in intel-rapl
 # as a safety mitigation, 40W to be used as as a ceiling for PC handheld devices
 INTEL_MAX_TDP = 40
+ONEXPLAYER_3_MAX_TDP = 40
 
 # sysfs intel-rapl power limits are in microwatts (path suffix `_uw`)
 MICROWATTS_PER_WATT = 1_000_000
@@ -63,6 +65,8 @@ def intel_tdp_path():
   return INTEL_TDP_PATH
 
 def set_tdp(tdp: int):
+  tdp = oxp3_fan.limit_tdp(tdp)  # optional overheat TDP cap (ONEXPLAYER 3)
+
   if not advanced_options.tdp_control_enabled():
     return
 
@@ -341,6 +345,9 @@ def get_intel_tdp_limits():
 
   if saved_max_tdp:
     max_tdp = saved_max_tdp
+  elif oxp3_fan.is_supported():
+    # the ONEXPLAYER 3 firmware reports 25 W, but the APU runs up to 40 W
+    max_tdp = ONEXPLAYER_3_MAX_TDP
   else:
     max_tdp = get_intel_max_tdp()
   return [min_tdp, max_tdp]

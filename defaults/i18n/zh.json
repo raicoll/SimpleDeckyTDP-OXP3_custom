@@ -87,5 +87,22 @@
   "ADVANCED_ASUS_EXTREME_POWERSAVE": "启用华硕极限省电模式",
   "ADVANCED_ASUS_EXTREME_POWERSAVE_DESC": "降低睡眠期间功耗。警告：需要更新 MCU 固件和 Asus-Linux 内核模块",
   "ADVANCED_ASUS_USE_WMI": "使用华硕 WMI 控制 TDP",
-  "ADVANCED_ASUS_USE_WMI_DESC": "使用华硕 WMI 调用替代 ryzenadj"
+  "ADVANCED_ASUS_USE_WMI_DESC": "使用华硕 WMI 调用替代 ryzenadj",
+  "TDP_ACTUAL": "当前 {tdp}W",
+  "FAN_SPEED_LABEL": "风扇",
+  "FAN_MODE_SILENT": "静音",
+  "FAN_MODE_AUTO": "自动",
+  "FAN_MODE_STANDARD": "标准",
+  "FAN_MODE_MAX": "最大",
+  "FAN_TARGET": "目标",
+  "FAN_TARGET_AUTO": "由 EC 自动控制",
+  "FAN_SILENT_COOL": "50°C 以下停转",
+  "FAN_SILENT_WARM": "温度较高，最低转速",
+  "FAN_STANDARD_CURVE": "随 CPU 温度调节",
+  "FAN_EMERGENCY": "高温保护",
+  "FAN_UNAVAILABLE": "风扇控制不可用（请检查 ec_sys）",
+  "FAN_TDP_CAPPED": "过热：TDP 已限制为 {cap}W",
+  "FAN_TDP_LIMITER": "过热时自动降低 TDP",
+  "FAN_TDP_LIMITER_DESC": "CPU 达到 80°C 时逐步降低 TDP 直到 75°C，降温后恢复",
+  "FAN_TDP_FLOOR": "TDP 下限"
 }

@@ -14,6 +14,7 @@ import AdvancedOptions from "./components/molecules/AdvancedOptions";
 import OtaUpdates from "./components/molecules/OtaUpdates";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PowerControl from "./components/molecules/PowerControl";
+import FanControl from "./components/molecules/FanControl";
 import { DeckySection } from "./components/atoms/DeckyFrontendLib";
 import { useIsDesktop } from "./hooks/desktopHooks";
 import { AdvancedOptionsEnum } from "./backend/utils";
@@ -44,6 +45,7 @@ const App: FC = memo(({}) => {
             <TdpProfiles isDesktop={isDesktop} />
             {tdpControlEnabled && <TdpSlider disabled={maxTdpAcProfileEnabled} />}
             {gpuControlEnabled && <Gpu />}
+            <FanControl />
           </DeckySection>
           <PowerControl />
           {tdpControlEnabled && (

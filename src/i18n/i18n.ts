@@ -67,8 +67,14 @@ export const getLanguageName = (lang?: string): string => {
  * @example
  * t('TDP_PROFILE_ENABLE_DESKTOP', 'Enable Desktop Profile')
  */
+const TRADITIONAL_CHINESE = ["tchinese", "zh-tw", "zh-hk", "zh-mo", "zh-hant"];
+
 const t = (key: string, originalString: string): string => {
   let lang = getCurrentLanguage();
+  // Traditional Chinese (Hong Kong / Taiwan) has its own file
+  if (lang && TRADITIONAL_CHINESE.includes(lang.toLowerCase())) {
+    lang = "zh_hant";
+  }
   // If there is a hyphenated area code (e.g. en-US), take the en prefix*/
   if (lang && lang.includes("-")) {
     lang = lang.split("-")[0];

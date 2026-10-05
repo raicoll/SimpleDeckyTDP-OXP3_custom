@@ -116,6 +116,9 @@ export enum ServerAPIMethods {
   GET_LATEST_VERSION_NUM = "get_latest_version_num",
   RESET_SETTINGS = "reset_settings",
   CHECK_RYZENADJ_COALL = "check_ryzenadj_coall",
+  FAN_GET_STATUS = "fan_get_status",
+  FAN_SET_MODE = "fan_set_mode",
+  FAN_SET_OPTIONS = "fan_set_options",
 }
 
 export const getSettings = callable<[], unknown>(ServerAPIMethods.GET_SETTINGS);
@@ -303,3 +306,33 @@ export const persistCpuBoost = ({
 
   return call(ServerAPIMethods.PERSIST_CPU_BOOST, cpuBoost, gameId);
 };
+
+// ONEXPLAYER 3 fan control (py_modules/oxp3_fan.py)
+export type Oxp3FanStatus = {
+  supported: boolean;
+  available: boolean;
+  mode: "auto" | "silent" | "standard" | "manual";
+  target: number;
+  rpm: number | null;
+  cpuTemp: number | null;
+  ecTarget: number | null;
+  emergency: boolean;
+  silentForced: boolean;
+  ceiling: number;
+  tdpLimiter: boolean;
+  tdpFloor: number;
+  tdpCap: number | null;
+  tdpRequested: number | null;
+  tdpActual: number | null;
+};
+
+export const getFanStatus = callable<[], Oxp3FanStatus>(
+  ServerAPIMethods.FAN_GET_STATUS
+);
+export const setFanMode = callable<[string, number | null], Oxp3FanStatus>(
+  ServerAPIMethods.FAN_SET_MODE
+);
+export const setFanOptions = callable<
+  [boolean | null, number | null],
+  Oxp3FanStatus
+>(ServerAPIMethods.FAN_SET_OPTIONS);
