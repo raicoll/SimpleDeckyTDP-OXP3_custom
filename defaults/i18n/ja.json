@@ -104,5 +104,16 @@
   "FAN_TDP_CAPPED": "過熱: TDP を {cap}W に制限中",
   "FAN_TDP_LIMITER": "過熱時に TDP を自動で下げる",
   "FAN_TDP_LIMITER_DESC": "CPU が 80°C になると 75°C まで TDP を少しずつ下げ、冷えたら戻します",
-  "FAN_TDP_FLOOR": "TDP 下限"
+  "FAN_TDP_FLOOR": "TDP 下限",
+  "QUICK_SUMMARY_TITLE": "概要",
+  "QUICK_MUTE": "ミュート",
+  "QUICK_AUDIO_OUTPUT": "出力デバイス",
+  "VIEW_OPTIONS_TITLE": "表示オプション",
+  "VIEW_TAB_ON_TOP": "このタブを一番上に表示",
+  "VIEW_SHOW_SUMMARY": "CPU と TDP を表示",
+  "VIEW_SHOW_BRIGHTNESS_VOLUME": "明るさと音量を表示",
+  "VIEW_SHOW_AUDIO_OUTPUT": "出力デバイスを表示",
+  "VIEW_SHOW_TDP": "TDP 制御を表示",
+  "VIEW_SHOW_TDP_DETAILS": "TDP 制御の詳細を表示",
+  "VIEW_TDP_ON_TOP": "TDP 制御を上部に表示"
 }

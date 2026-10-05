@@ -104,5 +104,16 @@
   "FAN_TDP_CAPPED": "과열: TDP {cap}W로 제한 중",
   "FAN_TDP_LIMITER": "과열 시 TDP 자동 감소",
   "FAN_TDP_LIMITER_DESC": "CPU 80°C부터 75°C가 될 때까지 TDP를 조금씩 낮추고, 식으면 복구",
-  "FAN_TDP_FLOOR": "TDP 최저 한도"
+  "FAN_TDP_FLOOR": "TDP 최저 한도",
+  "QUICK_SUMMARY_TITLE": "요약",
+  "QUICK_MUTE": "음소거",
+  "QUICK_AUDIO_OUTPUT": "출력 장치",
+  "VIEW_OPTIONS_TITLE": "상세 보기",
+  "VIEW_TAB_ON_TOP": "내 탭을 맨 위에 표시",
+  "VIEW_SHOW_SUMMARY": "CPU 및 TDP 표시",
+  "VIEW_SHOW_BRIGHTNESS_VOLUME": "밝기 볼륨 표시",
+  "VIEW_SHOW_AUDIO_OUTPUT": "출력 장치 표시",
+  "VIEW_SHOW_TDP": "TDP 제어 표시",
+  "VIEW_SHOW_TDP_DETAILS": "TDP 제어 상세 표시",
+  "VIEW_TDP_ON_TOP": "TDP 제어를 상단에 표시"
 }

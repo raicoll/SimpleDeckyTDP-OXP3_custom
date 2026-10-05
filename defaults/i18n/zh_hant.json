@@ -104,5 +104,16 @@
   "FAN_TDP_CAPPED": "過熱：TDP 已限制為 {cap}W",
   "FAN_TDP_LIMITER": "過熱時自動降低 TDP",
   "FAN_TDP_LIMITER_DESC": "CPU 達到 80°C 時逐步降低 TDP 直到 75°C，降溫後恢復",
-  "FAN_TDP_FLOOR": "TDP 下限"
+  "FAN_TDP_FLOOR": "TDP 下限",
+  "QUICK_SUMMARY_TITLE": "概要",
+  "QUICK_MUTE": "靜音",
+  "QUICK_AUDIO_OUTPUT": "輸出裝置",
+  "VIEW_OPTIONS_TITLE": "顯示選項",
+  "VIEW_TAB_ON_TOP": "將此分頁置頂",
+  "VIEW_SHOW_SUMMARY": "顯示 CPU 和 TDP",
+  "VIEW_SHOW_BRIGHTNESS_VOLUME": "顯示亮度和音量",
+  "VIEW_SHOW_AUDIO_OUTPUT": "顯示輸出裝置",
+  "VIEW_SHOW_TDP": "顯示 TDP 控制",
+  "VIEW_SHOW_TDP_DETAILS": "顯示 TDP 控制詳情",
+  "VIEW_TDP_ON_TOP": "將 TDP 控制顯示在頂部"
 }

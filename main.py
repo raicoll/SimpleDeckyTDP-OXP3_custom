@@ -17,6 +17,7 @@ from devices import lenovo
 import charge_limit
 import i18n
 import oxp3_fan
+import quick_controls
 
 class Plugin:
 
@@ -279,6 +280,22 @@ class Plugin:
 
   async def fan_set_options(self, tdp_limiter: bool = None, tdp_floor: int = None):
     return oxp3_fan.set_options(tdp_limiter, tdp_floor)
+
+  # Quick controls (status, brightness, audio)
+  async def quick_get_state(self):
+    return quick_controls.get_state()
+
+  async def quick_set_brightness(self, percent: int):
+    return quick_controls.set_brightness(percent)
+
+  async def quick_set_volume(self, percent: int):
+    return quick_controls.set_volume(percent)
+
+  async def quick_set_mute(self, muted: bool):
+    return quick_controls.set_mute(muted)
+
+  async def quick_set_output(self, name: str):
+    return quick_controls.set_output(name)
 
   # Asyncio-compatible long-running code, executed in a task when the plugin is loaded
   async def _main(self):

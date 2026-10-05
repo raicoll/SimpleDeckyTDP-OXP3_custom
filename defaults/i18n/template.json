@@ -104,5 +104,16 @@
   "FAN_TDP_CAPPED": "Overheating: TDP limited to {cap}W",
   "FAN_TDP_LIMITER": "Lower TDP when overheating",
   "FAN_TDP_LIMITER_DESC": "From 80°C, lower TDP step by step until 75°C, and restore it once cool",
-  "FAN_TDP_FLOOR": "Lowest TDP"
+  "FAN_TDP_FLOOR": "Lowest TDP",
+  "QUICK_SUMMARY_TITLE": "Summary",
+  "QUICK_MUTE": "Mute",
+  "QUICK_AUDIO_OUTPUT": "Output device",
+  "VIEW_OPTIONS_TITLE": "View Options",
+  "VIEW_TAB_ON_TOP": "Show my tab at the top",
+  "VIEW_SHOW_SUMMARY": "Show CPU and TDP",
+  "VIEW_SHOW_BRIGHTNESS_VOLUME": "Show brightness and volume",
+  "VIEW_SHOW_AUDIO_OUTPUT": "Show output device",
+  "VIEW_SHOW_TDP": "Show TDP controls",
+  "VIEW_SHOW_TDP_DETAILS": "Show TDP control details",
+  "VIEW_TDP_ON_TOP": "Show TDP controls at the top"
 }

@@ -15,6 +15,9 @@ import OtaUpdates from "./components/molecules/OtaUpdates";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PowerControl from "./components/molecules/PowerControl";
 import FanControl from "./components/molecules/FanControl";
+import QuickControls from "./components/molecules/QuickControls";
+import ViewOptions from "./components/molecules/ViewOptions";
+import { useUiPrefs } from "./hooks/useUiPrefs";
 import { DeckySection } from "./components/atoms/DeckyFrontendLib";
 import { useIsDesktop } from "./hooks/desktopHooks";
 import { AdvancedOptionsEnum } from "./backend/utils";
@@ -37,16 +40,19 @@ const App: FC = memo(({}) => {
     AdvancedOptionsEnum.ENABLE_GPU_CONTROL
   );
 
-  return (
+  const prefs = useUiPrefs();
+  const details = prefs.showTdpDetails;
+
+  const tdpBlock = prefs.showTdp && (
     <>
-      {!loading && (
+      <DeckySection>
+        {details && <TdpProfiles isDesktop={isDesktop} />}
+        {tdpControlEnabled && <TdpSlider disabled={maxTdpAcProfileEnabled} />}
+        {gpuControlEnabled && <Gpu />}
+        <FanControl showOptions={details} />
+      </DeckySection>
+      {details && (
         <>
-          <DeckySection>
-            <TdpProfiles isDesktop={isDesktop} />
-            {tdpControlEnabled && <TdpSlider disabled={maxTdpAcProfileEnabled} />}
-            {gpuControlEnabled && <Gpu />}
-            <FanControl />
-          </DeckySection>
           <PowerControl />
           {tdpControlEnabled && (
             <>
@@ -55,7 +61,19 @@ const App: FC = memo(({}) => {
             </>
           )}
           <AdvancedOptions />
-          {!isDesktop && (
+        </>
+      )}
+    </>
+  );
+
+  return (
+    <>
+      {!loading && (
+        <>
+          <QuickControls prefs={prefs} tdpControls={tdpBlock} />
+          <ViewOptions prefs={prefs} />
+          {/* System info goes last, below the view options */}
+          {prefs.showTdp && details && !isDesktop && (
             <ErrorBoundary title="OTA Updates">
               <OtaUpdates />
             </ErrorBoundary>

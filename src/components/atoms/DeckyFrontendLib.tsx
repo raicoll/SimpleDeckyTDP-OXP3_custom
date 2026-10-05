@@ -4,6 +4,7 @@
 */
 import {
   ButtonItem,
+  DropdownItem,
   Field,
   PanelSection,
   PanelSectionRow,
@@ -25,6 +26,8 @@ export const DeckySlider = SliderField;
 export const DeckyButton = ButtonItem;
 
 export const DeckyField = Field;
+
+export const DeckyDropdown = DropdownItem;
 
 // from @decky/ui
 export type NotchLabel = {

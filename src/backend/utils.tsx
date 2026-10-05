@@ -119,6 +119,11 @@ export enum ServerAPIMethods {
   FAN_GET_STATUS = "fan_get_status",
   FAN_SET_MODE = "fan_set_mode",
   FAN_SET_OPTIONS = "fan_set_options",
+  QUICK_GET_STATE = "quick_get_state",
+  QUICK_SET_BRIGHTNESS = "quick_set_brightness",
+  QUICK_SET_VOLUME = "quick_set_volume",
+  QUICK_SET_MUTE = "quick_set_mute",
+  QUICK_SET_OUTPUT = "quick_set_output",
 }
 
 export const getSettings = callable<[], unknown>(ServerAPIMethods.GET_SETTINGS);
@@ -336,3 +341,67 @@ export const setFanOptions = callable<
   [boolean | null, number | null],
   Oxp3FanStatus
 >(ServerAPIMethods.FAN_SET_OPTIONS);
+
+// Quick controls (py_modules/quick_controls.py)
+export type QuickState = {
+  temp: number | null;
+  power: number | null;
+  brightness: number | null;
+  volume: number;
+  muted: boolean;
+  sink: string;
+  sinks: { name: string; label: string; description: string }[];
+};
+
+// Steam keeps its own output device override (Settings > Audio). If it still
+// points at the old device, Steam's volume buttons change that device, so
+// point the override at the device that was just selected.
+export const syncSteamAudioOutput = async (sink: {
+  label: string;
+  description: string;
+}) => {
+  const audio = (window as any).SteamClient?.System?.Audio;
+  if (!audio?.GetDevices || !audio?.SetDefaultDeviceOverride) return;
+  const norm = (v: string) => (v || "").trim().toLowerCase();
+  const want = [norm(sink.description), norm(sink.label)].filter(Boolean);
+  const info = await audio.GetDevices();
+  const outputs = (info?.vecDevices || []).filter((d: any) => d.bHasOutput);
+  const dev =
+    outputs.find((d: any) => want.includes(norm(d.sName))) ||
+    outputs.find((d: any) =>
+      want.some((w) => norm(d.sName).includes(w) || w.includes(norm(d.sName)))
+    );
+  if (!dev || info.activeOutputDeviceId === dev.id) return;
+  // The audio type value for "output" is not documented; try both and keep
+  // the one that actually moved the output, undoing a stray input override.
+  for (const audioType of [1, 0]) {
+    await audio.SetDefaultDeviceOverride(dev.id, audioType);
+    const after = await audio.GetDevices();
+    if (
+      after.overrideOutputDeviceId === dev.id ||
+      after.activeOutputDeviceId === dev.id
+    )
+      return;
+    if (
+      after.overrideInputDeviceId === dev.id &&
+      info.overrideInputDeviceId !== dev.id
+    )
+      await audio.ClearDefaultDeviceOverride(audioType);
+  }
+};
+
+export const getQuickState = callable<[], QuickState>(
+  ServerAPIMethods.QUICK_GET_STATE
+);
+export const setBrightness = callable<[number], boolean>(
+  ServerAPIMethods.QUICK_SET_BRIGHTNESS
+);
+export const setVolume = callable<[number], boolean>(
+  ServerAPIMethods.QUICK_SET_VOLUME
+);
+export const setMute = callable<[boolean], boolean>(
+  ServerAPIMethods.QUICK_SET_MUTE
+);
+export const setAudioOutput = callable<[string], boolean>(
+  ServerAPIMethods.QUICK_SET_OUTPUT
+);
